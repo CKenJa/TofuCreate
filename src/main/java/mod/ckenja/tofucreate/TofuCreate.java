@@ -2,9 +2,7 @@ package mod.ckenja.tofucreate;
 
 import com.mojang.logging.LogUtils;
 import com.simibubi.create.Create;
-import com.simibubi.create.compat.tconstruct.SpoutCasting;
 import mod.ckenja.tofucreate.create.SpoutTofu;
-import mod.ckenja.tofucreate.item.ItemRegister;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -23,7 +21,6 @@ public class TofuCreate {
     public static final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
     public TofuCreate(){
-        ItemRegister.ITEMS.register(modEventBus);
         addCustomSpoutInteraction(Create.asResource("tofucreate"), new SpoutTofu());
         modEventBus.addListener(this::setup);
         modEventBus.addListener(this::enqueueIMC);
