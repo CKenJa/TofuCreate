@@ -14,8 +14,10 @@ import org.slf4j.Logger;
 
 import static com.simibubi.create.api.behaviour.BlockSpoutingBehaviour.addCustomSpoutInteraction;
 
-@Mod(BuildConfig.MODID)
+@Mod(TofuCreate.MODID)
 public class TofuCreate {
+
+    public static final String MODID = "tofucreate";
     public static final Logger LOGGER = LogUtils.getLogger();
     public static Item ChargedElementCannon;
     public static final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
