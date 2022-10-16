@@ -1,7 +1,6 @@
 package mod.ckenja.tofucreate;
 
 import baguchan.tofucraft.registry.TofuBlocks;
-import com.simibubi.create.AllBlocks;
 import com.mojang.logging.LogUtils;
 import com.simibubi.create.AllMovementBehaviours;
 import com.simibubi.create.Create;
@@ -11,6 +10,7 @@ import com.simibubi.create.foundation.data.CreateRegistrate;
 import mod.ckenja.tofucreate.create.BlockPressBehaviour;
 import mod.ckenja.tofucreate.create.BlockPressMovementBehavior;
 import mod.ckenja.tofucreate.create.SpoutTofu;
+import mod.ckenja.tofucreate.register.AllBlocks;
 import mod.ckenja.tofucreate.register.AllFluids;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -30,13 +30,14 @@ public class TofuCreate {
     public static final IEventBus forgeEventBus = MinecraftForge.EVENT_BUS;
     public static final CreateRegistrate registrate = CreateRegistrate.lazy(BuildConfig.MODID).get();
     public TofuCreate(){
-        AllFluids.register();
         addCustomSpoutInteraction(Create.asResource("tofucreate"), new SpoutTofu());
         modEventBus.addListener(this::setup);
         modEventBus.addListener(this::enqueueIMC);
         modEventBus.addListener(this::processIMC);
         forgeEventBus.addGenericListener(MechanicalPressTileEntity.class, (TileEntityBehaviourEvent<MechanicalPressTileEntity> event) -> event
                 .attach(new BlockPressBehaviour(event.getTileEntity())));
+        AllFluids.register();
+        AllBlocks.register(modEventBus);
         //AllMovementBehaviours.registerBehaviour(AllBlocks.MECHANICAL_PRESS.get(), new BlockPressMovementBehavior());
         //AllMovementBehaviours.registerBehaviour(AllBlocks.SPOUT.get(), new BlockSpoutMovementBehavior());
         //AllRecipeTypes.register(modEventBus);
