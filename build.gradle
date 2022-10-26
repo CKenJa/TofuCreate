@@ -55,7 +55,6 @@ minecraft {
             workingDirectory project.file('run')
 
             //https://forge.gemwire.uk/wiki/Hotswap
-            jvmArg "-XX:+AllowEnhancedClassRedefinition"
 
             property 'mixin.env.remapRefMap', 'true'
             property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
