@@ -16,10 +16,12 @@ public class SpoutTofu extends BlockSpoutingBehaviour {
         if(availableFluid.getFluid() != TofuFluids.BITTERN.get())
             return 0;
         ItemStack result = RecipeHelper.getBitternResult(world.getFluidState(pos).getType());
-        if(result == null)
+        if (result == null)
             return 0;
-        world.setBlock(pos, Block.byItem(result.getItem()).defaultBlockState(), 11);
-        world.levelEvent(2001, pos, Block.getId(world.getBlockState(pos)));
-        return 250;
+        if(!simulate) {
+            world.setBlock(pos, Block.byItem(result.getItem()).defaultBlockState(), 11);
+            world.levelEvent(2001, pos, Block.getId(world.getBlockState(pos)));
+        }
+        return 500;
     }
 }

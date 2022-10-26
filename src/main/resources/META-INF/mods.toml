@@ -12,7 +12,7 @@ displayName="TofuCreate" #mandatory
 #displayURL="https://change.me.to.your.mods.homepage.example.invalid/" #optional
 #logoFile="examplemod.png" #optional
 credits="Thanks for this example mod goes to Java" #optional
-authors="Ckenja, bagu_chan" #optional
+authors="CKenJa, bagu_chan" #optional
 description='''
 This is a long form description of the mod. You can write whatever you want here
 
@@ -29,12 +29,12 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mollis lacinia magn
 [[dependencies.tofucreate]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.19.2,)"
+    versionRange="[1.19.2,1.20)"
     ordering="NONE"
     side="BOTH"
-[[dependencies.modid]]
-modId="create"
-mandatory=true
-versionRange="[0.5.0.e,)"
-ordering="NONE"
-side="BOTH"
+[[dependencies.create]]
+    modId="create"
+    mandatory=true
+    versionRange="[0.5.0.e,)"
+    ordering="NONE"
+    side="BOTH"
