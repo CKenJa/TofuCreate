@@ -6,6 +6,7 @@ import com.simibubi.create.content.contraptions.components.press.MechanicalPress
 import com.simibubi.create.foundation.tileEntity.TileEntityBehaviour;
 import com.simibubi.create.foundation.tileEntity.behaviour.BehaviourType;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -46,7 +47,7 @@ public class BlockPressBehaviour extends TileEntityBehaviour {
                     entityScanCooldown--;
                 if (entityScanCooldown <= 0) {
                     entityScanCooldown = ENTITY_SCAN;
-                    ItemStack result = RecipeHelper.getBitternResult(level.getFluidState(worldPosition.below(2)).getType());
+                    ItemStack result = RecipeHelper.getBitternResult((ServerLevel) level, level.getFluidState(worldPosition.below(2)).getType());
                     if (result != null) {
                         onBlock = true;
                         pressTileEntity.pressingBehaviour.running = true;
@@ -68,7 +69,7 @@ public class BlockPressBehaviour extends TileEntityBehaviour {
                     return;
                 else
                     tileEntity.sendData();
-                ItemStack result = RecipeHelper.getBitternResult(level.getFluidState(worldPosition.below(2)).getType());
+                ItemStack result = RecipeHelper.getBitternResult((ServerLevel) level, level.getFluidState(worldPosition.below(2)).getType());
                 if (result == null)
                     return;
                 level.setBlock(worldPosition.below(2), Block.byItem(result.getItem()).defaultBlockState(), 11);
