@@ -46,7 +46,6 @@ public class TofuCreate {
     }
 
     private void setup(final FMLCommonSetupEvent event) {
-        LOGGER.info("登録");
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event) {
