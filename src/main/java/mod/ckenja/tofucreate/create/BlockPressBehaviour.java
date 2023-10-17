@@ -45,7 +45,7 @@ public class BlockPressBehaviour extends BlockEntityBehaviour {
                     entityScanCooldown--;
                 if (entityScanCooldown <= 0) {
                     entityScanCooldown = ENTITY_SCAN;
-                    ItemStack result = RecipeHelper.getBitternResult((ServerLevel) level, level.getFluidState(worldPosition.below(2)).getType());
+                    ItemStack result = RecipeHelper.getTofu((ServerLevel) level, level.getBlockState(worldPosition.below(2)).getBlock());
                     if (result != null) {
                         onBlock = true;
                         pressTileEntity.pressingBehaviour.running = true;
