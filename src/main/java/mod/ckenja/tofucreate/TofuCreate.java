@@ -33,9 +33,10 @@ public class TofuCreate {
         modEventBus.addListener(this::processIMC);
         forgeEventBus.addGenericListener(MechanicalPressBlockEntity.class, (BlockEntityBehaviourEvent<MechanicalPressBlockEntity> event) -> event
                 .attach(new BlockPressBehaviour(event.getBlockEntity())));
+        registrate.registerEventListeners(modEventBus);
         AllFluids.register();
         AllBlocks.register(modEventBus);
-        registrate.registerEventListeners(modEventBus);
+
         //AllMovementBehaviours.registerBehaviour(AllBlocks.MECHANICAL_PRESS.get(), new BlockPressMovementBehavior());
         //AllMovementBehaviours.registerBehaviour(AllBlocks.SPOUT.get(), new BlockSpoutMovementBehavior());
         //AllRecipeTypes.register(modEventBus);

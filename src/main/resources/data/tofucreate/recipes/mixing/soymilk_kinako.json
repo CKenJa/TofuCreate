@@ -12,7 +12,7 @@
       "amount": 1000
     },
     {
-      "fluid": "tofucraft:kinako",
+      "item": "tofucraft:kinako",
       "count": 1
     }
   ],
