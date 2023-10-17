@@ -6,9 +6,9 @@ buildscript {
         maven { url = 'https://maven.parchmentmc.org' }
         maven { url = 'https://repo.spongepowered.org/maven' }
     }
-dependencies {
-    classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: "${forgegradle_version}", changing: true
-    classpath "org.parchmentmc:librarian:${librarian_version}"
+    dependencies {
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: "${forgegradle_version}", changing: true
+        classpath "org.parchmentmc:librarian:${librarian_version}"
         classpath "org.spongepowered:mixingradle:${mixingradle_version}"
     }
 }
@@ -55,6 +55,7 @@ minecraft {
             workingDirectory project.file('run')
 
             //https://forge.gemwire.uk/wiki/Hotswap
+            jvmArg "-XX:+AllowEnhancedClassRedefinition"
 
             property 'mixin.env.remapRefMap', 'true'
             property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
