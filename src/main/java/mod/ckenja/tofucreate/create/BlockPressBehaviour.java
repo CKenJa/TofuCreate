@@ -71,7 +71,7 @@ public class BlockPressBehaviour extends BlockEntityBehaviour {
                 ItemStack result = RecipeHelper.getTofu((ServerLevel) level, level.getBlockState(worldPosition.below(2)).getBlock());
                 if (result == null)
                     return;
-                if (level.random.nextInt(30) == 0) {
+                if (level.random.nextInt(30) != 0) {
                     level.levelEvent(2001, worldPosition.below(2), Block.getId(level.getBlockState(worldPosition.below(2))));
 
                     return;
