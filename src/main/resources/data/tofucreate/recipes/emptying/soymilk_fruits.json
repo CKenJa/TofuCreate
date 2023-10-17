@@ -1,0 +1,17 @@
+{
+  "type": "create:emptying",
+  "ingredients": [
+    {
+      "item": "tofucraft:soymilk_fruits"
+    }
+  ],
+  "results": [
+    {
+      "item": "minecraft:glass_bottle"
+    },
+    {
+      "fluid": "tofucreate:soymilk_fruits",
+      "amount": 250
+    }
+  ]
+}

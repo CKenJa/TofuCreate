@@ -1,0 +1,27 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "fluid": "tofucraft:soymilk",
+      "amount": 1000
+    },
+    {
+      "item": "tofucraft:kyoninso"
+    },
+    {
+      "item": "tofucraft:kyoninso"
+    }
+  ],
+  "results": [
+    {
+      "fluid": "tofucreate:soymilk_annin",
+      "amount": 1000
+    }
+  ]
+}

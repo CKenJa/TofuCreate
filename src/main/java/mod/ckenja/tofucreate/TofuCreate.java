@@ -1,14 +1,11 @@
 package mod.ckenja.tofucreate;
 
-import baguchan.tofucraft.registry.TofuBlocks;
 import com.mojang.logging.LogUtils;
-import com.simibubi.create.AllMovementBehaviours;
 import com.simibubi.create.Create;
-import com.simibubi.create.api.event.TileEntityBehaviourEvent;
-import com.simibubi.create.content.contraptions.components.press.MechanicalPressTileEntity;
+import com.simibubi.create.api.event.BlockEntityBehaviourEvent;
+import com.simibubi.create.content.kinetics.press.MechanicalPressBlockEntity;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import mod.ckenja.tofucreate.create.BlockPressBehaviour;
-import mod.ckenja.tofucreate.create.BlockPressMovementBehavior;
 import mod.ckenja.tofucreate.create.SpoutTofu;
 import mod.ckenja.tofucreate.register.AllBlocks;
 import mod.ckenja.tofucreate.register.AllFluids;
@@ -28,16 +25,17 @@ public class TofuCreate {
     public static final Logger LOGGER = LogUtils.getLogger();
     public static final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
     public static final IEventBus forgeEventBus = MinecraftForge.EVENT_BUS;
-    public static final CreateRegistrate registrate = CreateRegistrate.lazy(BuildConfig.MODID).get();
+    public static final CreateRegistrate registrate = CreateRegistrate.create(BuildConfig.MODID);
     public TofuCreate(){
         addCustomSpoutInteraction(Create.asResource("tofucreate"), new SpoutTofu());
         modEventBus.addListener(this::setup);
         modEventBus.addListener(this::enqueueIMC);
         modEventBus.addListener(this::processIMC);
-        forgeEventBus.addGenericListener(MechanicalPressTileEntity.class, (TileEntityBehaviourEvent<MechanicalPressTileEntity> event) -> event
-                .attach(new BlockPressBehaviour(event.getTileEntity())));
+        forgeEventBus.addGenericListener(MechanicalPressBlockEntity.class, (BlockEntityBehaviourEvent<MechanicalPressBlockEntity> event) -> event
+                .attach(new BlockPressBehaviour(event.getBlockEntity())));
         AllFluids.register();
         AllBlocks.register(modEventBus);
+        registrate.registerEventListeners(modEventBus);
         //AllMovementBehaviours.registerBehaviour(AllBlocks.MECHANICAL_PRESS.get(), new BlockPressMovementBehavior());
         //AllMovementBehaviours.registerBehaviour(AllBlocks.SPOUT.get(), new BlockSpoutMovementBehavior());
         //AllRecipeTypes.register(modEventBus);

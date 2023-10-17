@@ -1,0 +1,17 @@
+{
+  "type": "create:emptying",
+  "ingredients": [
+    {
+      "item": "tofucraft:soymilk_ramune"
+    }
+  ],
+  "results": [
+    {
+      "item": "minecraft:glass_bottle"
+    },
+    {
+      "fluid": "tofucreate:soymilk_ramune",
+      "amount": 250
+    }
+  ]
+}

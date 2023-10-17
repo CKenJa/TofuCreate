@@ -1,0 +1,36 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "fluid": "tofucraft:soymilk",
+      "amount": 1000
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:apple"
+    },
+    {
+      "item": "minecraft:sweet_berries"
+    },
+    {
+      "item": "minecraft:glow_berries"
+    },
+    {
+      "item": "minecraft:chorus_fruit"
+    }
+  ],
+  "results": [
+    {
+      "fluid": "tofucreate:soymilk_fruits",
+      "amount": 1000
+    }
+  ]
+}

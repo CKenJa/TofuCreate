@@ -1,27 +1,28 @@
 package mod.ckenja.tofucreate.create;
 
-import mod.ckenja.tofucreate.TofuCreate;
 import baguchan.tofucraft.utils.RecipeHelper;
-import com.simibubi.create.content.contraptions.components.press.MechanicalPressTileEntity;
-import com.simibubi.create.foundation.tileEntity.TileEntityBehaviour;
-import com.simibubi.create.foundation.tileEntity.behaviour.BehaviourType;
+import com.simibubi.create.content.kinetics.press.MechanicalPressBlockEntity;
+import com.simibubi.create.foundation.blockEntity.behaviour.BehaviourType;
+import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
+import mod.ckenja.tofucreate.TofuCreate;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 
-import static com.simibubi.create.content.contraptions.components.press.PressingBehaviour.CYCLE;
-import static com.simibubi.create.content.contraptions.components.press.PressingBehaviour.ENTITY_SCAN;
+import static com.simibubi.create.content.kinetics.press.PressingBehaviour.CYCLE;
+import static com.simibubi.create.content.kinetics.press.PressingBehaviour.ENTITY_SCAN;
 
-public class BlockPressBehaviour extends TileEntityBehaviour {
+public class BlockPressBehaviour extends BlockEntityBehaviour {
 
     public static final BehaviourType<BlockPressBehaviour> TYPE = new BehaviourType<>();
     //public PressingBehaviour pressingBehaviour;
-    public MechanicalPressTileEntity pressTileEntity;
+    public MechanicalPressBlockEntity pressTileEntity;
     int entityScanCooldown;
     boolean onBlock;
-    public BlockPressBehaviour(MechanicalPressTileEntity tileEntity) {
+
+    public BlockPressBehaviour(MechanicalPressBlockEntity tileEntity) {
         super(tileEntity);
         pressTileEntity = tileEntity;
         onBlock = false;
@@ -55,7 +56,7 @@ public class BlockPressBehaviour extends TileEntityBehaviour {
                         pressTileEntity.pressingBehaviour.runningTicks = 0;
                         pressTileEntity.pressingBehaviour.particleItems.clear();
                         pressTileEntity.pressingBehaviour.mode.headOffset = 19f / 16f;
-                        tileEntity.sendData();
+                        blockEntity.sendData();
                     }
                 }
             }
@@ -68,7 +69,7 @@ public class BlockPressBehaviour extends TileEntityBehaviour {
                 if (level.isClientSide)
                     return;
                 else
-                    tileEntity.sendData();
+                    blockEntity.sendData();
                 ItemStack result = RecipeHelper.getBitternResult((ServerLevel) level, level.getFluidState(worldPosition.below(2)).getType());
                 if (result == null)
                     return;
